@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial;
+  font-size: 17px;
+  padding: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+</style>
+
+</head>
+<body>
+
+
+  <div class="col-75">
+    <div class="container">
+      <form action="/action_page.php">
+      
+        <div class="row">
+        
+         
+          <div class="col-50">
+            <h3>Billing Address</h3>
+            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="text" id="email" name="email" placeholder="john@example.com">
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+            <label for="city"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="city" name="city" placeholder="New York">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="NY">
+              </div>
+              <div class="col-50">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" name="zip" placeholder="10001">
+              </div>
+
+
+              <div class="col-50" >
+                <!--Payment Method Section -->
+          <h3>Choose Payment Method</h3>
+          
+          <div class="payment-method" required="">
+              <input type="radio" id="credit-debit" name="payment-method" value="credit-debit" checked="">
+              <label for="credit-debit">Credit/Debit Card</label>
+          </div>
+          
+          <div class="form-group" id="card-info">
+              <label for="card-number">Card Number</label>
+              <input type="text" id="card-number" placeholder="Enter your card number">
+          </div>
+          
+          <div class="form-group" id="expiry-date">
+              <label for="expiry">Expiry Date</label>
+              <input type="text" id="expiry" placeholder="MM/YY">
+          </div>
+          
+          <div class="form-group" id="cvv">
+              <label for="cvv">CVV</label>
+              <input type="text" id="cvv" placeholder="Enter your CVV">
+          </div>
+          
+          <div class="payment-method" required="">
+              <input type="radio" id="upi" name="payment-method" value="upi">
+              <label for="upi">UPI</label>
+          </div>
+          
+          <div class="form-group" id="upi-info" style="display: none;">
+              <label for="upi-id">UPI ID</label>
+              <input type="text" id="upi-id" placeholder="Enter your UPI ID">
+          </div>
+          
+          <div class="payment-method" required="">
+              <input type="radio" id="cod" name="payment-method" value="cod">
+              <label for="cod">Cash on Delivery</label>
+         
+                 </selection>
+              
+              </div>
+            </div>
+          </div>
+
+        
+           
+           
+              </div>
+            </div>
+          </div>
+          
+        </div>
+       
+    </div>
+  </div>
+
+  <div class="col-25">
+    <div class="container">
+      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
+      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
+      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
+      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
+      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+   
+    </div>
+  </div>
+</div>
+<form action="https://www.paypal.com/cgi-bin/webscr">
+ <!-- Identify your business so that you can collect the payments. --> 
+ <input type="hidden" name="business" value="herschelgomez@xyzzyu.com"> 
+  <!-- Specify a Buy Now button. --> 
+  
+    <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+  </label>
+  <input type="submit" value="Place order" class="btn" id="placeOrderBtn">
+</form>
+
+
+<script>
+  document.getElementById("placeOrderBtn").addEventListener("click", function (e) {
+      e.preventDefault(); // Prevent default form submission
+
+      const fullName = document.getElementById("fullName").value;
+      const phone = document.getElementById("phone").value;
+      const address = document.getElementById("address").value;
+      const city = document.getElementById("city").value;
+      const zipcode = document.getElementById("zipcode").value;
+      const state = document.getElementById("state").value;
+      const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+
+      // If credit card, capture card details
+      let cardInfo = {};
+      if (paymentMethod === "credit-debit") {
+          cardInfo = {
+              cardNumber: document.getElementById("card-number").value,
+              expiry: document.getElementById("expiry").value,
+              cvv: document.getElementById("cvv").value
+          };
+      }
+
+      // Send data to server via fetch or AJAX
+      fetch('/place-order', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              fullName,
+              phone,
+              address,
+              city,
+              zipcode,
+              state,
+              paymentMethod,
+              cardInfo
+          })
+      }).then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Order placed successfully! Check your email for the order ID.");
+            } else {
+                alert("Failed to place order. Please try again.");
+            }
+        })
+        .catch(err => console.error('Error:', err));
+  });
+</script>
+
+
+
+
+<script>
+const http =require("http")
+const express = require("express");
+const bodyParser = require("body-parser");
+const nodemailer = require("nodemailer");
+const stripe = require("stripe")("YOUR_STRIPE_SECRET_KEY");
+
+const app = express();
+app.use(bodyParser.json());
+
+// Simulate database for orders (In production, use a proper database)
+let orders = [];
+
+// Nodemailer setup (use your email configuration)
+const transporter = nodemailer.createTransport({
+service: 'gmail',
+secure :true,
+port :465,
+auth: {
+     user: 'Vishalthakurktr44@gmail.com',
+     pass: 'cbjkfjuxbmksxfqa'
+}
+});
+
+
+// Place Order Endpoint
+app.post("/place-order", async (req, res) => {
+try {
+  const { fullName, phone, address, city, zipcode, state, paymentMethod, cardInfo } = req.body;
+  
+  // Generate a unique order ID
+  const orderId = `ORDER-${Date.now()}`;
+
+  // Store order in database (here we're just simulating it with an array)
+  orders.push({
+      orderId,
+      fullName,
+      phone,
+      address,
+      city,
+      zipcode,
+      state,
+      paymentMethod
+  });
+
+  // Process payment using Stripe (if credit card)
+  if (paymentMethod === "credit-debit") {
+      const paymentIntent = await stripe.paymentIntents.create({
+          amount: 5000, // The amount in cents (e.g., 5000 for $50.00)
+          currency: 'INR',
+          payment_method_data: {
+              type: 'card',
+              card: {
+                  number: cardInfo.cardNumber,
+                  exp_month: cardInfo.expiry.split("/")[0],
+                  exp_year: cardInfo.expiry.split("/")[1],
+                  cvc: cardInfo.cvv
+              }
+          },
+          confirm: true
+      });
+  }
+
+  // Send confirmation email with order ID
+  const mailOptions = {
+      from: 'Vishalthakurktr44@gmail.com',
+      to: 'vishalthakurktr@gmail.com',  // Replace with customer's email
+      subject: 'Order Confirmation',
+      text: `Thank you for your order! Your order ID is ${orderId}.`
+  };
+  
+  transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          return res.status(500).json({ success: false, message: "Failed to send email." });
+      }
+      res.status(200).json({ success: true, message: "Order placed successfully!" });
+  });
+} catch (error) {
+  res.status(500).json({ success: false, message: "Error placing order." });
+}
+});
+
+// Start the server
+app.listen(3000, () => {
+console.log("Server running on port 3000");
+});
+server.listen(8080);
+</script>
+
+
+<script>
+document.getElementById("placeOrderBtn").addEventListener("click", function (e) {
+  e.preventDefault(); // Prevent default form submission
+
+  const fullName = document.getElementById("fullName").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+  const city = document.getElementById("city").value;
+  const zipcode = document.getElementById("zipcode").value;
+  const state = document.getElementById("state").value;
+  const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+
+  // If credit card, capture card details
+  let cardInfo = {};
+  if (paymentMethod === "credit-debit") {
+      cardInfo = {
+          cardNumber: document.getElementById("card-number").value,
+          expiry: document.getElementById("expiry").value,
+          cvv: document.getElementById("cvv").value
+      };
+  }
+
+  // Send data to server via fetch or AJAX
+  fetch('/place-order', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          fullName,
+          phone,
+          address,
+          city,
+          zipcode,
+          state,
+          paymentMethod,
+          cardInfo
+      })
+  }).then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert("Order placed successfully! Check your email for the order ID.");
+        } else {
+            alert("Failed to place order. Please try again.");
+        }
+    })
+    .catch(err => console.error('Error:', err));
+});
+
+
+//old code
+
+  // Toggle payment options visibility
+  document.getElementById('credit-debit').addEventListener('click', function() {
+      document.getElementById('card-info').style.display = 'block';
+      document.getElementById('expiry-date').style.display = 'block';
+      document.getElementById('cvv').style.display = 'block';
+      document.getElementById('upi-info').style.display = 'none';
+  });
+
+  document.getElementById('upi').addEventListener('click', function() {
+      document.getElementById('card-info').style.display = 'none';
+      document.getElementById('expiry-date').style.display = 'none';
+      document.getElementById('cvv').style.display = 'none';
+      document.getElementById('upi-info').style.display = 'block';
+  });
+
+  document.getElementById('cod').addEventListener('click', function() {
+      document.getElementById('card-info').style.display = 'none';
+      document.getElementById('expiry-date').style.display = 'none';
+      document.getElementById('cvv').style.display = 'none';
+      document.getElementById('upi-info').style.display = 'none';
+  });
+
+
+
+   // Toggle payment options visibility
+   document.getElementById('credit-debit').addEventListener('click', function() {
+      document.getElementById('card-info').style.display = 'block';
+      document.getElementById('expiry-date').style.display = 'block';
+      document.getElementById('cvv').style.display = 'block';
+      document.getElementById('upi-info').style.display = 'none';
+  });
+
+  document.getElementById('upi').addEventListener('click', function() {
+      document.getElementById('card-info').style.display = 'none';
+      document.getElementById('expiry-date').style.display = 'none';
+      document.getElementById('cvv').style.display = 'none';
+      document.getElementById('upi-info').style.display = 'block';
+  });
+
+  document.getElementById('cod').addEventListener('click', function() {
+      document.getElementById('card-info').style.display = 'none';
+      document.getElementById('expiry-date').style.display = 'none';
+      document.getElementById('cvv').style.display = 'none';
+      document.getElementById('upi-info').style.display = 'none';
+  });
+</script>
+
+<!--Code injected by live-server -->
+<script>
+// <![CDATA[  <-- For SVG support
+if ('WebSocket' in window) {
+(function () {
+function refreshCSS() {
+  var sheets = [].slice.call(document.getElementsByTagName("link"));
+  var head = document.getElementsByTagName("head")[0];
+  for (var i = 0; i < sheets.length; ++i) {
+    var elem = sheets[i];
+    var parent = elem.parentElement || head;
+    parent.removeChild(elem);
+    var rel = elem.rel;
+    if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+      var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+      elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+    }
+    parent.appendChild(elem);
+  }
+}
+var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+var address = protocol + window.location.host + window.location.pathname + '/ws';
+var socket = new WebSocket(address);
+socket.onmessage = function (msg) {
+  if (msg.data == 'reload') window.location.reload();
+  else if (msg.data == 'refreshcss') refreshCSS();
+};
+if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+  console.log('Live reload enabled.');
+  sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+}
+})();
+}
+else {
+console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+}
+// ]]>
+</script>
+
+<!-- Code injected by live-server -->
+<script>
+// <![CDATA[  <-- For SVG support
+if ('WebSocket' in window) {
+(function () {
+function refreshCSS() {
+  var sheets = [].slice.call(document.getElementsByTagName("link"));
+  var head = document.getElementsByTagName("head")[0];
+  for (var i = 0; i < sheets.length; ++i) {
+    var elem = sheets[i];
+    var parent = elem.parentElement || head;
+    parent.removeChild(elem);
+    var rel = elem.rel;
+    if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+      var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+      elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+    }
+    parent.appendChild(elem);
+  }
+}
+var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+var address = protocol + window.location.host + window.location.pathname + '/ws';
+var socket = new WebSocket(address);
+socket.onmessage = function (msg) {
+  if (msg.data == 'reload') window.location.reload();
+  else if (msg.data == 'refreshcss') refreshCSS();
+};
+if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+  console.log('Live reload enabled.');
+  sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+}
+})();
+}
+else {
+console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+}
+// ]]> 
+</script>
+</body>
+
+</html>
+
+
+
